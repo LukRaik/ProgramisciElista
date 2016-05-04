@@ -10,9 +10,14 @@ namespace Data.Converters
 {
     public static class UtilConverters
     {
-        public static Result<T> AsResult<T>(this T data, Status status)
+        public static JsonResult<T> AsResult<T>(this T data, Status status)
         {
-            return new Result<T>(data,status);
+            return new JsonResult<T>(data,status);
+        }
+
+        public static JsonResult<T> AsOkResult<T>(this T data)
+        {
+            return new JsonResult<T>(data, Status.Ok);
         }
     }
 }

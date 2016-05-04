@@ -9,5 +9,7 @@ namespace Core.Interfaces
     public interface ILogger
     {
         void Log(string log, string logtype = "log");
+
+        void Error(string errorMsg);
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.SelfHost;
 using Core.Interfaces;
+using Data;
 using ProgramisciElista.Impl;
 using ProgramisciElista.MessageHandler;
 using ProgramisciElista.Session;
@@ -24,7 +25,6 @@ namespace ProgramisciElista
         static void Main(string[] args)
         {
 
-
             using (var container = GetContainer())
             {
 
@@ -35,6 +35,7 @@ namespace ProgramisciElista
 
                 var us = container.GetInstance<IUserService>();
                 var ss = container.GetInstance<ISessionService>();
+
 
                 Config.Filters.Add(new SimpleAuthFilter(ss, us));
 

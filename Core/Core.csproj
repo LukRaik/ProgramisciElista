@@ -43,8 +43,12 @@
     <Compile Include="Enums\Status.cs" />
     <Compile Include="Interfaces\Interfaces.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Transfer\Result.cs" />
+    <Compile Include="Transfer\JsonResult.cs" />
+    <Compile Include="Transfer\User\PasswordDto.cs" />
+    <Compile Include="Transfer\User\UserBasicDto.cs" />
+    <Compile Include="Transfer\User\UserCreateDto.cs" />
     <Compile Include="Transfer\User\UserDto.cs" />
+    <Compile Include="Transfer\User\UserLoggedDto.cs" />
     <Compile Include="Transfer\User\UserLoginDto.cs" />
     <Compile Include="Transfer\User\UserLoginResultDto.cs" />
   </ItemGroup>

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class UserGroup
+    public class Team
     {
         public int Id { get; set; }
 
-        public List<User> User { get; set; }
+        public User TeamLeader { get; set; }
 
-        public string GroupName { get; set; }
+        public List<User> TeamMembers { get; set; }
     }
 }

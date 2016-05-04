@@ -39,7 +39,7 @@ namespace WebApiServer.Controllers
                 foreach (var apiDescription in Configuration.Services.GetApiExplorer().ApiDescriptions)
                 {
                     var sendObj = apiDescription.ActionDescriptor.GetParameters().FirstOrDefault();
-                    _logger.Log($"Found {apiDescription.HttpMethod.Method}","PostmanApi");
+                    _logger.Log($"Found {apiDescription.ActionDescriptor.ActionName}","PostmanApi");
                     var request = new PostmanRequest
                     {
                         collectionId = postManCollection.id,

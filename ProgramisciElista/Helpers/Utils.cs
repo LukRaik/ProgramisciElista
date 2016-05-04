@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Transfer.User
+namespace ProgramisciElista.Helpers
 {
-    public class UserDto:UserBasicDto
+    public static class Utils
     {
-        public int Id { get; set; }
     }
 }

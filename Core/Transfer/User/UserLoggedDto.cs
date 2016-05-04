@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Core.Transfer.User
 {
-    public class UserLoginResultDto
+    public class UserLoggedDto: UserBasicDto
     {
-        public string Token { get; set; }
-
-        public UserDto User { get; set; }
+        public int Id { get; set; }
+        public bool IsActive { get; set; }
     }
 }

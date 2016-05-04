@@ -7,12 +7,12 @@ using Core.Enums;
 
 namespace Core.Transfer
 {
-    public class Result<T>
+    public class JsonResult<T>
     {
         public T Data { get; set; }
         public Status Status { get; set; }
 
-        public Result(T data,Status status)
+        public JsonResult(T data,Status status)
         {
             Data = data;
             Status = status;

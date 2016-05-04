@@ -80,9 +80,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ApiExtendedController.cs" />
     <Compile Include="Controllers\PostmanController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\AuthFilter.cs" />
+    <Compile Include="Filters\RoleAttribute.cs" />
+    <Compile Include="Helpers\Utils.cs" />
     <Compile Include="Impl\Logger.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="MessageHandler\CorsHandler.cs" />
@@ -90,6 +95,7 @@
     <Compile Include="Postman\PostmanRequest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultHelper.cs" />
     <Compile Include="Session\Identity.cs" />
     <Compile Include="Session\ISessionService.cs" />
     <Compile Include="Session\Principal.cs" />

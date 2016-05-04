@@ -13,5 +13,10 @@ namespace ProgramisciElista.Impl
         {
             Console.WriteLine($"[{logtype}]:{log}");
         }
+
+        public void Error(string errorMsg)
+        {
+            Log(errorMsg,"Error");
+        }
     }
 }

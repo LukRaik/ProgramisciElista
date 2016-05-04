@@ -36,14 +36,20 @@ namespace WebApiServer.Misc
             HttpRequestMessage request = context.Request;
             var sessionheader = request.Headers.Any(x => x.Key == "Session");
 
+            if (context.ActionContext.ActionDescriptor.GetCustomAttributes<AllowAnonymousAttribute>().Any()) return;
 
-            if (sessionheader == false) return;
+            if (sessionheader == false)
+            {
+                context.ErrorResult = new AuthenticationFailureResult("Required session header", request);
+                return;
+            }
 
             var sessionToken = request.Headers.GetValues("Session").First();
 
             if (string.IsNullOrEmpty(sessionToken))
             {
                 context.ErrorResult = new AuthenticationFailureResult("Missing credentials", request);
+                return;
             }
 
             var user = _sessionService.SessionCheck(sessionToken);
@@ -51,11 +57,9 @@ namespace WebApiServer.Misc
             if (user == null)
             {
                 context.ErrorResult = new AuthenticationFailureResult("Invalid session", request);
+                return;
             }
-            else
-            {
-                context.Principal = _userService.GetPrincipal(user.Id);
-            }
+            context.Principal = _userService.GetPrincipal(user.Id);
         }
         public Task ChallengeAsync(HttpAuthenticationChallengeContext context, CancellationToken cancellationToken)
         {

@@ -12,5 +12,6 @@ namespace ProgramisciElista.Session
         string Login(string email, string password);
         User SessionCheck(string token);
         void LogOut(int userId);
+        Dictionary<User, bool> GetUsersWithActivity();
     }
 }
