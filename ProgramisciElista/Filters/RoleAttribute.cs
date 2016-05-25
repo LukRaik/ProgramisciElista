@@ -14,17 +14,22 @@ namespace ProgramisciElista.Filters
 {
     public class RoleAttribute: AuthorizationFilterAttribute
     {
-        private readonly string _role;
+        private readonly List<string> _roles;
 
         public RoleAttribute(string role)
         {
-            _role = role;
+            _roles = new List<string>() {role};
+        }
+
+        public RoleAttribute(string role1, string role2)
+        {
+            _roles = new List<string>() { role1,role2 };
         }
 
         public override void OnAuthorization(HttpActionContext actionContext)
         {
             var principal = ((Principal)actionContext.RequestContext.Principal);
-            if (principal.IsInRole(_role))
+            if (_roles.Any(x=>principal.IsInRole(x)))
             {
                 base.OnAuthorization(actionContext);
             }

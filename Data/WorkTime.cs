@@ -10,15 +10,15 @@ namespace Data
     {
         public int Id { get; set; }
 
-        public User User { get; set; }
+        public virtual User User { get; set; }
 
-        public DateTime DateStart { get; set; }
+        public DateTime HourStart { get; set; }
 
-        public DateTime DateEnd { get; set; }
+        public DateTime? HourEnd { get; set; }
 
         public string WorkLog { get; set; }
 
-
+        public bool IsLate { get; set; }
 
     }
 }

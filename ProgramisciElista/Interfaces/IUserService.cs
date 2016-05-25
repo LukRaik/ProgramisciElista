@@ -4,10 +4,13 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Transfer;
+using Core.Transfer.Team;
+using Core.Transfer.User;
 using Data;
 using ProgramisciElista.Session;
 
-namespace ProgramisciElista
+namespace ProgramisciElista.Interfaces
 {
     public interface IUserService
     {/// <summary>
@@ -22,13 +25,18 @@ namespace ProgramisciElista
 
         Principal GetPrincipal(int id);
 
-        List<User> GetUsers(Func<User, bool> where);
+        List<TeamDto> GetTeams(int userId);
+        
+        List<User> GetUsers(Func<User, bool> where, ListDto dto=null);
+
+        List<UserDto> ListUsers(int pageSize, int page, Func<User, bool> where = null, string searchByField = null,
+            string fieldValue = null);
 
         void Activate(int id);
 
         void Deactivate(int id);
 
-        User Create(User user);
+        User Create(User user,string group);
 
         void Update(int id, Func<User, User> setter);
 

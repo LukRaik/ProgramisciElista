@@ -7,10 +7,12 @@ using System.Web.Http;
 using Core.Enums;
 using Core.Interfaces;
 using Core.Transfer;
+using Core.Transfer.Team;
 using Core.Transfer.User;
 using Data;
 using Data.Converters;
 using ProgramisciElista.Filters;
+using ProgramisciElista.Interfaces;
 using ProgramisciElista.Session;
 
 namespace ProgramisciElista.Controllers
@@ -22,16 +24,37 @@ namespace ProgramisciElista.Controllers
 
         private readonly ISessionService _sessionService;
 
-        public AdminController(IUserService userService, ISessionService sessionService, ILogger logger) : base(logger)
+        private readonly ITeamService _teamService;
+
+        public AdminController(IUserService userService, ISessionService sessionService, ILogger logger, ITeamService teamService) : base(logger)
         {
             _userService = userService;
             _sessionService = sessionService;
+            _teamService = teamService;
         }
-
-        public JsonResult<List<UserLoggedDto>> GetUsers()
+        [HttpGet]
+        public JsonResult<List<UserLoggedDto>> GetUsersActivity()
         {
             Log("Get users");
             return _sessionService.GetUsersWithActivity().Select(x => x.MapToDto()).ToList().AsResult(Status.Ok);
+        }
+
+        [HttpGet]
+        [Route("{pageSize}/{page}/{searchByField}/{fieldValue}")]
+        public JsonResult<List<UserDto>> List(int pageSize, int page,string searchByField, string fieldValue)
+        {
+            if (string.IsNullOrEmpty(searchByField)) searchByField = null;
+            if (string.IsNullOrEmpty(fieldValue)) fieldValue = null;
+
+            return _userService.ListUsers(pageSize, page,x=>true, searchByField, fieldValue).AsOkResult();
+        }
+
+        public JsonResult<List<TeamDto>> TeamsList(int pageSize, int page, string searchByField, string fieldValue)
+        {
+            if (string.IsNullOrEmpty(searchByField)) searchByField = null;
+            if (string.IsNullOrEmpty(fieldValue)) fieldValue = null;
+
+            return _teamService.ListTeams(pageSize, page, x => true, searchByField, fieldValue).AsOkResult();
         }
 
         [HttpPut]
@@ -73,7 +96,7 @@ namespace ProgramisciElista.Controllers
                 IsActive = true,
                 Lastname = dto.Lastname,
                 Password = dto.Password,
-            });
+            },dto.Group);
             return user.MapToDto().AsResult(Status.Ok);
         }
 

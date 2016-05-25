@@ -13,63 +13,55 @@ namespace Data.Migrations
         {
             AutomaticMigrationsEnabled = false;
         }
-        protected override void Seed(Data.ElistaDbContext context)
+        protected override void Seed(Data.ElistaDbContext db)
         {
-            //  This method will be called after migrating to the latest version.
+            base.Seed(db);
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            foreach (var user in db.Users)
+            {
+                db.Users.Remove(user);
+            }
 
-            
+            db.SaveChanges();
 
-            context.Users.AddOrUpdate(new User()
+            db.UserGroups.AddOrUpdate(x=>x.Id,new UserGroup()
             {
                 Id = 1,
-                Firstname = "£ukasz",
-                Lastname = "Zimnoch",
-                TechDate = DateTime.Now,
-                Password = "qwe123",
-                Email = "asd@wp.pl",
-                IsActive = true
+                GroupName = "Admin",
+                Users = new List<User>()
+                {
+                    new User()
+                    {
+                        Id = 1,
+                        Firstname = "£ukasz",
+                        Lastname = "Zimnoch",
+                        TechDate = DateTime.Now,
+                        Password = "qwe123",
+                        Email = "asd@wp.pl",
+                        IsActive = true
+                    }
+                }
             });
 
-            context.Users.AddOrUpdate(new User()
+            db.UserGroups.AddOrUpdate(x=>x.Id,new UserGroup()
             {
                 Id = 2,
-                Firstname = "£ukasz",
-                Lastname = "Zimnoch",
-                TechDate = DateTime.Now,
-                Password = "qwe123",
-                Email = "asdc@wp.pl",
-                IsActive = true
+                GroupName = "Leader",
+                Users = new List<User>()
+                {
+                    new User()
+                    {
+                        Id = 2,
+                        Firstname = "£ukasz",
+                        Lastname = "Zimnoch",
+                        TechDate = DateTime.Now,
+                        Password = "qwe123",
+                        Email = "asdc@wp.pl",
+                        IsActive = true
+                    }
+                }
             });
-
-            context.SaveChanges();
-            
-
-            context.UserGroups.AddOrUpdate(new UserGroup()
-            {
-                Id = 1,
-                User = new List<User>() {context.Users.Find(1)},
-                GroupName = "Admin"
-            });
-
-            context.UserGroups.AddOrUpdate(new UserGroup()
-            {
-                Id = 2,
-                User = new List<User>() {context.Users.Find(2)},
-                GroupName = "Leader"
-            });
-
-            context.SaveChanges();
+            db.SaveChanges();
         }
     }
 }

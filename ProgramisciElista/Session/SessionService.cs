@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Core.Interfaces;
 using Data;
+using ProgramisciElista.Interfaces;
 
 namespace ProgramisciElista.Session
 {
@@ -40,6 +41,15 @@ namespace ProgramisciElista.Session
                 Log("Login failed");
                 return null;
             }
+
+            var existingToken = _sessionTokens.FirstOrDefault(x => x.Value == id).Key;
+
+            if (existingToken != null)
+            {
+                return existingToken;
+            }
+
+
             var token = Guid.NewGuid().ToString();
             Log($"Login ok, {token}");
 

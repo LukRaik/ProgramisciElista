@@ -51,8 +51,11 @@
   <ItemGroup>
     <Compile Include="Absence.cs" />
     <Compile Include="ContextExtensions.cs" />
+    <Compile Include="Converters\PlansDiaryConverters.cs" />
+    <Compile Include="Converters\TeamConverter.cs" />
     <Compile Include="Converters\UserConverter.cs" />
     <Compile Include="Converters\UtilConverters.cs" />
+    <Compile Include="Converters\WorkTimeConverters.cs" />
     <Compile Include="ElistaDbContext.cs" />
     <Compile Include="Migrations\201604261346145_initial.cs" />
     <Compile Include="Migrations\201604261346145_initial.Designer.cs">
@@ -69,6 +72,38 @@
     <Compile Include="Migrations\201605032107222_changes.cs" />
     <Compile Include="Migrations\201605032107222_changes.Designer.cs">
       <DependentUpon>201605032107222_changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605110646258_teams.cs" />
+    <Compile Include="Migrations\201605110646258_teams.Designer.cs">
+      <DependentUpon>201605110646258_teams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605110801073_userFix.cs" />
+    <Compile Include="Migrations\201605110801073_userFix.Designer.cs">
+      <DependentUpon>201605110801073_userFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605250015005_Absences.cs" />
+    <Compile Include="Migrations\201605250015005_Absences.Designer.cs">
+      <DependentUpon>201605250015005_Absences.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605250047165_emailfix.cs" />
+    <Compile Include="Migrations\201605250047165_emailfix.Designer.cs">
+      <DependentUpon>201605250047165_emailfix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605250117279_worktimefix.cs" />
+    <Compile Include="Migrations\201605250117279_worktimefix.Designer.cs">
+      <DependentUpon>201605250117279_worktimefix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605250122426_worktimeplansdiaryfix.cs" />
+    <Compile Include="Migrations\201605250122426_worktimeplansdiaryfix.Designer.cs">
+      <DependentUpon>201605250122426_worktimeplansdiaryfix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605250159082_changes1.cs" />
+    <Compile Include="Migrations\201605250159082_changes1.Designer.cs">
+      <DependentUpon>201605250159082_changes1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605250524028_changes2.cs" />
+    <Compile Include="Migrations\201605250524028_changes2.Designer.cs">
+      <DependentUpon>201605250524028_changes2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlansDiary.cs" />
@@ -94,6 +129,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605032107222_changes.resx">
       <DependentUpon>201605032107222_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605110646258_teams.resx">
+      <DependentUpon>201605110646258_teams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605110801073_userFix.resx">
+      <DependentUpon>201605110801073_userFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605250015005_Absences.resx">
+      <DependentUpon>201605250015005_Absences.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605250047165_emailfix.resx">
+      <DependentUpon>201605250047165_emailfix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605250117279_worktimefix.resx">
+      <DependentUpon>201605250117279_worktimefix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605250122426_worktimeplansdiaryfix.resx">
+      <DependentUpon>201605250122426_worktimeplansdiaryfix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605250159082_changes1.resx">
+      <DependentUpon>201605250159082_changes1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605250524028_changes2.resx">
+      <DependentUpon>201605250524028_changes2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

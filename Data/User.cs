@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +12,15 @@ namespace Data
     {
         public int Id { get; set; }
 
-        public List<UserGroup> UserGroups { get; set; }
+        public virtual UserGroup UserGroup { get; set; }
 
-        public List<PlansDiary> PlansDiaries { get; set; }
+        public virtual List<PlansDiary> PlansDiaries { get; set; }
 
-        public List<WorkTime> WorkTimes { get; set; }
+        public virtual List<WorkTime> WorkTimes { get; set; }
 
-        public List<Absence> Absences { get; set; }
+        public virtual List<Absence> Absences { get; set; }
+
+        public virtual List<Team> Teams { get; set; }
 
         public string Lastname { get; set; }
 
@@ -24,6 +28,9 @@ namespace Data
 
         public DateTime TechDate { get; set; }
 
+        [Column(TypeName = "VARCHAR")]
+        [StringLength(50)]
+        [Index(IsUnique = true)]
         public string Email { get; set; }
 
         public string Password { get; set; }

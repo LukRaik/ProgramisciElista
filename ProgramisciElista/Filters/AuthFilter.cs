@@ -12,6 +12,7 @@ using System.Web.Http;
 using System.Web.Http.Filters;
 using System.Web.Http.Results;
 using ProgramisciElista;
+using ProgramisciElista.Interfaces;
 using ProgramisciElista.Session;
 
 namespace WebApiServer.Misc

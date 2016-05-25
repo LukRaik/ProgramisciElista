@@ -9,9 +9,8 @@ namespace Data
 {
     public class ElistaDbContext:DbContext
     {
-        public ElistaDbContext():base("Elista")
+        public ElistaDbContext() : base("Elista4")
         {
-                
         }
 
         public DbSet<Absence> Absences { get; set; }
@@ -24,5 +23,6 @@ namespace Data
 
         public DbSet<PlansDiary> PlansDiaries { get; set; }
 
+        public DbSet<Team> Teams { get; set; }
     }
 }

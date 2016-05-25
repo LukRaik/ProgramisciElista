@@ -8,7 +8,9 @@ using System.Web.Http;
 using System.Web.Http.SelfHost;
 using Core.Interfaces;
 using Data;
+using Newtonsoft.Json;
 using ProgramisciElista.Impl;
+using ProgramisciElista.Interfaces;
 using ProgramisciElista.MessageHandler;
 using ProgramisciElista.Session;
 using SimpleInjector;
@@ -25,8 +27,23 @@ namespace ProgramisciElista
         static void Main(string[] args)
         {
 
+
+
             using (var container = GetContainer())
             {
+
+                using (var db = new ElistaDbContext())
+                {
+                    foreach (var workTime in db.WorkTimes)
+                    {
+                        workTime.HourEnd = DateTime.Now;
+                    }
+
+                    db.SaveChanges();
+                }
+                
+
+
 
                 ILogger logger = container.GetInstance<ILogger>();
                 logger.Log($"Init webApi server at {host}");
@@ -58,6 +75,9 @@ namespace ProgramisciElista
             container.Register<ILogger, Logger>(Lifestyle.Singleton);
             container.Register<IUserService, UserService>(Lifestyle.Singleton);
             container.Register<ISessionService, SessionService>(Lifestyle.Singleton);
+            container.Register<ITeamService,TeamService>(Lifestyle.Singleton);
+            container.Register<IPlansDiaryService,PlansDiaryService>(Lifestyle.Singleton);
+            container.Register<IWorkLoggingService,WorkLoggingService>(Lifestyle.Singleton);
 
             //WebApi config
             WebApiConfig();
@@ -78,7 +98,9 @@ namespace ProgramisciElista
                    "API Default", "{controller}/{action}/{id}",
                    new { id = RouteParameter.Optional });
             Config.Formatters.Clear();
-            Config.Formatters.Add(new JsonMediaTypeFormatter());
+            var jsonFormatter =
+                new JsonMediaTypeFormatter {SerializerSettings = {NullValueHandling = NullValueHandling.Ignore}};
+            Config.Formatters.Add(jsonFormatter);
         }
     }
 

@@ -82,6 +82,8 @@
   <ItemGroup>
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ApiExtendedController.cs" />
+    <Compile Include="Controllers\DiaryController.cs" />
+    <Compile Include="Controllers\LeaderController.cs" />
     <Compile Include="Controllers\PostmanController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -89,7 +91,13 @@
     <Compile Include="Filters\RoleAttribute.cs" />
     <Compile Include="Helpers\Utils.cs" />
     <Compile Include="Impl\Logger.cs" />
-    <Compile Include="IUserService.cs" />
+    <Compile Include="Impl\PlansDiaryService.cs" />
+    <Compile Include="Impl\WorkLoggingService.cs" />
+    <Compile Include="Interfaces\IPlansDiary.cs" />
+    <Compile Include="Interfaces\ITeamService.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="Interfaces\IWorkLoggingService.cs" />
+    <Compile Include="Interfaces\IWorkTimeService.cs" />
     <Compile Include="MessageHandler\CorsHandler.cs" />
     <Compile Include="Postman\PostmanCollection.cs" />
     <Compile Include="Postman\PostmanRequest.cs" />
@@ -100,7 +108,8 @@
     <Compile Include="Session\ISessionService.cs" />
     <Compile Include="Session\Principal.cs" />
     <Compile Include="Session\SessionService.cs" />
-    <Compile Include="Session\UserService.cs" />
+    <Compile Include="Impl\TeamService.cs" />
+    <Compile Include="Impl\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -116,10 +125,7 @@
       <Name>Data</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

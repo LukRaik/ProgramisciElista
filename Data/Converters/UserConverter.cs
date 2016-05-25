@@ -18,7 +18,8 @@ namespace Data.Converters
                 Lastname = user.Lastname,
                 TechDate = user.TechDate,
                 Firstname = user.Firstname,
-                IsActivated = user.IsActive
+                IsActivated = user.IsActive,
+                GroupName = user.UserGroup.GroupName
             };
         }
 

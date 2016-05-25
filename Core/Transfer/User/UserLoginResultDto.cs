@@ -11,5 +11,7 @@ namespace Core.Transfer.User
         public string Token { get; set; }
 
         public UserDto User { get; set; }
+
+        public string Group { get; set; }
     }
 }

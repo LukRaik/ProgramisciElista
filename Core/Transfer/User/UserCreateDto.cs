@@ -8,6 +8,7 @@ namespace Core.Transfer.User
 {
     public class UserCreateDto: UserBasicDto
     {
-        public string Password { get; set; }   
+        public string Password { get; set; }
+        public string Group { get; set; }
     }
 }

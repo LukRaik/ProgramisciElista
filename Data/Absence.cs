@@ -10,10 +10,12 @@ namespace Data
     {
         public int Id { get; set; }
 
-        public User User { get; set; }
+        public virtual User User { get; set; }
 
         public DateTime DateStart { get; set; }
 
         public DateTime DateEnd { get; set; }
+
+        public bool Accepted { get; set; }
     }
 }

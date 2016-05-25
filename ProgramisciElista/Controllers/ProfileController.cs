@@ -10,6 +10,7 @@ using Core.Interfaces;
 using Core.Transfer;
 using Core.Transfer.User;
 using Data.Converters;
+using ProgramisciElista.Interfaces;
 using ProgramisciElista.Session;
 
 namespace ProgramisciElista.Controllers
@@ -18,11 +19,13 @@ namespace ProgramisciElista.Controllers
     {
         private readonly ISessionService _sessionService;
         private readonly IUserService _userService;
+        private readonly IWorkLoggingService _workLoggingService;
 
-        public ProfileController(ILogger logger, IUserService userService, ISessionService sessionService) : base(logger)
+        public ProfileController(ILogger logger, IUserService userService, ISessionService sessionService, IWorkLoggingService workLoggingService) : base(logger)
         {
             _userService = userService;
             _sessionService = sessionService;
+            _workLoggingService = workLoggingService;
         }
 
         [HttpPost]
@@ -71,16 +74,19 @@ namespace ProgramisciElista.Controllers
                 return new UserLoginResultDto().AsResult(Status.Error);
             }
             var user = _sessionService.SessionCheck(token);
+            if (user.UserGroup.GroupName=="User") _workLoggingService.StartLogWork(user.Id);
             return (new UserLoginResultDto()
             {
                 Token = token,
-                User = user.MapToDto()
+                User = user.MapToDto(),
+                Group = user.UserGroup.GroupName
             }).AsResult(Status.Ok);
         }
         [HttpPost]
-        public JsonResult<object> Logout()
+        public JsonResult<object> Logout(string msg)
         {
             Log($"Logging out {User.Identity.Name}");
+            if(User.IsInRole("User")) _workLoggingService.EndLogWork(((Identity)User.Identity).User.Id,msg);
             _sessionService.LogOut(((Identity)User.Identity).User.Id);
 
             return new object().AsResult(Status.Ok);

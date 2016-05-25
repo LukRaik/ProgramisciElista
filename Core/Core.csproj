@@ -44,6 +44,11 @@
     <Compile Include="Interfaces\Interfaces.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transfer\JsonResult.cs" />
+    <Compile Include="Transfer\ListDto.cs" />
+    <Compile Include="Transfer\PlansDiary\CreatePlanDto.cs" />
+    <Compile Include="Transfer\PlansDiary\PlansDiaryDto.cs" />
+    <Compile Include="Transfer\Team\TeamMembersDto.cs" />
+    <Compile Include="Transfer\Team\TeamDto.cs" />
     <Compile Include="Transfer\User\PasswordDto.cs" />
     <Compile Include="Transfer\User\UserBasicDto.cs" />
     <Compile Include="Transfer\User\UserCreateDto.cs" />
@@ -51,6 +56,8 @@
     <Compile Include="Transfer\User\UserLoggedDto.cs" />
     <Compile Include="Transfer\User\UserLoginDto.cs" />
     <Compile Include="Transfer\User\UserLoginResultDto.cs" />
+    <Compile Include="Transfer\WorkTime\GetMonthlyWorkDto.cs" />
+    <Compile Include="Transfer\WorkTime\WorkTimeDto.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

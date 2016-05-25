@@ -10,7 +10,7 @@ namespace Data
     {
         public int Id { get; set; }
 
-        public List<User> User { get; set; }
+        public virtual List<User> Users { get; set; }
 
         public string GroupName { get; set; }
     }

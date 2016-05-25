@@ -9,5 +9,7 @@ namespace Core.Transfer.User
     public class UserDto:UserBasicDto
     {
         public int Id { get; set; }
+
+        public string GroupName { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace ProgramisciElista.Session
 
         public bool IsInRole(string role)
         {
-            return _identity.User.UserGroups.Any(x => x.GroupName == role);
+            return _identity.User.UserGroup.GroupName == role;
         }
 
         public IIdentity Identity => _identity;
