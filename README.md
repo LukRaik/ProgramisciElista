@@ -1,4 +1,4 @@
-# ProgramisciElista
+# ProgramisciElista - projekt na fakultet
 
 Dokumentacja aplikacji restowej.
 
